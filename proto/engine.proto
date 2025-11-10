@@ -1,0 +1,16 @@
+syntax = "proto3";
+package engine;
+
+service Engine {
+  rpc SubmitOrder(Order) returns (OrderAck) {}
+}
+
+message Order {
+  string id = 1;
+  string symbol = 2;
+  string side = 3; // BUY or SELL
+  int64 qty = 4;
+  double price = 5;
+}
+
+message OrderAck { string status = 1; string filled_id = 2; }
